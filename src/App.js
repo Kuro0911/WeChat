@@ -1,20 +1,34 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Pusher from "pusher-js";
 import "./App.css";
 import Chat from "./Chat";
 import Sidebar from "./Sidebar";
-
+import axios from "./axios";
 function App() {
+  const [message, setMessage] = useState([]);
   useEffect(() => {
-    var pusher = new Pusher("ca483be98c5f58141de1", {
+    axios.get("/messages/sync").then((response) => {
+      setMessage(response.data);
+    });
+  }, []);
+
+  useEffect(() => {
+    const pusher = new Pusher("ca483be98c5f58141de1", {
       cluster: "ap2",
     });
 
-    var channel = pusher.subscribe("messages");
-    channel.bind("inserted", (data) => {
-      alert(JSON.stringify(data));
+    const channel = pusher.subscribe("messages");
+    channel.bind("inserted", (newMessage) => {
+      alert(JSON.stringify(newMessage));
+      setMessage([...message, newMessage]);
     });
-  }, []);
+    return () => {
+      channel.unbind_all();
+      channel.unsubscribe();
+    };
+  }, [message]);
+
+  console.log(message);
 
   return (
     <div className="App">

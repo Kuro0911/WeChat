@@ -5,10 +5,9 @@ import InsertEmoticonOutlinedIcon from "@mui/icons-material/InsertEmoticonOutlin
 import MicOutlinedIcon from "@mui/icons-material/MicOutlined";
 import { Avatar, IconButton } from "@mui/material";
 import ChatMessageGet from "./Chat-messages/chat-message-get";
-import ChatMessageSend from "./Chat-messages/chat-message-send";
 import React from "react";
 import "./Chat.css";
-function Chat() {
+function Chat({ message }) {
   return (
     <div className="chat">
       <div className="chat-header">
@@ -33,8 +32,7 @@ function Chat() {
       </div>
 
       <div className="chat-body">
-        <ChatMessageSend />
-        <ChatMessageGet />
+        <ChatMessageGet messages={message} />
       </div>
       <div className="chat-foot">
         <InsertEmoticonOutlinedIcon />

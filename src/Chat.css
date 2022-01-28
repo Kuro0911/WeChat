@@ -31,28 +31,3 @@
   padding: 30px;
   overflow: scroll;
 }
-
-.chat-foot {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 62px;
-  border-top: 1px solid lightgrey;
-}
-.chat-foot > form {
-  flex: 1;
-  display: flex;
-}
-.chat-foot > form > input {
-  flex: 1;
-  border-radius: 30px;
-  padding: 10px;
-  border: none;
-}
-.chat-foot > form > button {
-  display: none;
-}
-.chat-foot > .MuiSvgIcon-root {
-  padding: 10px;
-  color: grey;
-}

@@ -4,7 +4,7 @@ import InsertEmoticonOutlinedIcon from "@mui/icons-material/InsertEmoticonOutlin
 import MicOutlinedIcon from "@mui/icons-material/MicOutlined";
 import { useState } from "react";
 import axios from "./axios1.js";
-function ChatMessageSend({ name }) {
+function ChatMessageSend() {
   const [input, setInput] = useState("");
 
   const sendMessage = async (e) => {
@@ -12,7 +12,7 @@ function ChatMessageSend({ name }) {
 
     await axios.post("/messages/new", {
       message: input,
-      name: `${name}`,
+      name: `default`,
       received: true,
     });
     setInput("");

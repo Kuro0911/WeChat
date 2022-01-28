@@ -6,7 +6,7 @@ import ChatMessageGet from "./Chat-messages/chat-message-get";
 import ChatMessageSend from "./Chat-messages/chat-message-send";
 import React from "react";
 import "./Chat.css";
-function Chat({ message }) {
+function Chat({ name, message }) {
   return (
     <div className="chat">
       <div className="chat-header">
@@ -33,7 +33,7 @@ function Chat({ message }) {
       <div className="chat-body">
         <ChatMessageGet messages={message} />
       </div>
-      <ChatMessageSend />
+      <ChatMessageSend name={name} />
     </div>
   );
 }

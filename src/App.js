@@ -5,6 +5,12 @@ import Chat from "./Chat";
 import Sidebar from "./Sidebar";
 import axios from "./axios";
 function App() {
+  const [name, setName] = useState("");
+  useEffect(() => {
+    var n = prompt("enter your name");
+    setName(n);
+  }, []);
+
   const [message, setMessage] = useState([]);
   useEffect(() => {
     axios.get("/messages/sync").then((response) => {
@@ -33,7 +39,7 @@ function App() {
     <div className="App">
       <div className="app-body">
         <Sidebar />
-        <Chat message={message} />
+        <Chat name={name} message={message} />
       </div>
     </div>
   );

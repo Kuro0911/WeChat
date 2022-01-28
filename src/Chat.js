@@ -4,6 +4,8 @@ import AttachFileOutlinedIcon from "@mui/icons-material/AttachFileOutlined";
 import InsertEmoticonOutlinedIcon from "@mui/icons-material/InsertEmoticonOutlined";
 import MicOutlinedIcon from "@mui/icons-material/MicOutlined";
 import { Avatar, IconButton } from "@mui/material";
+import ChatMessageGet from "./Chat-messages/chat-message-get";
+import ChatMessageSend from "./Chat-messages/chat-message-send";
 import React from "react";
 import "./Chat.css";
 function Chat() {
@@ -31,28 +33,8 @@ function Chat() {
       </div>
 
       <div className="chat-body">
-        <p className="chat-message">
-          <span className="chat-name">kuro</span>
-          suiiii
-          <span className="chat-time">
-            {new Date().toLocaleTimeString("en-US", {
-              hour12: false,
-              hour: "numeric",
-              minute: "numeric",
-            })}
-          </span>
-        </p>
-        <p className="chat-message chat-get">
-          <span className="chat-name">NOT kuro</span>
-          suuuuuuuiiiiiiiiiiii
-          <span className="chat-time">
-            {new Date().toLocaleTimeString("en-US", {
-              hour12: false,
-              hour: "numeric",
-              minute: "numeric",
-            })}
-          </span>
-        </p>
+        <ChatMessageSend />
+        <ChatMessageGet />
       </div>
       <div className="chat-foot">
         <InsertEmoticonOutlinedIcon />

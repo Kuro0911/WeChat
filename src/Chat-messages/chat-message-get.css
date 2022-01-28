@@ -1,0 +1,19 @@
+.chat-get {
+  position: relative;
+  font-size: 16px;
+  padding: 10px;
+  width: fit-content;
+  border-radius: 10px;
+  background-color: #ffffff;
+  margin-bottom: 30px;
+}
+.chat-time {
+  margin-left: 10px;
+  font-size: xx-small;
+}
+.chat-name {
+  position: absolute;
+  top: -15px;
+  font-weight: 800;
+  font-size: xx-small;
+}

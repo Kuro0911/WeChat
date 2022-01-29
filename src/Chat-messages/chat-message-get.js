@@ -1,35 +1,38 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./chat-message-get.css";
-function ChatMessageGet({ messages }) {
-  /* backend using mongodb implementaion
-  {messages.map((msg) => {
-    return (
-      <p className={`chat-get ${msg.received && "chat-send"}`}>
-        <span className="chat-name">{msg.name}</span>
-        {msg.message}
-        <span className="chat-time">
-          {new Date().toLocaleTimeString("en-US", {
-            hour12: false,
-            hour: "numeric",
-            minute: "numeric",
-          })}
-        </span>
-      </p>
-    );
-  })}
-  */
+import db from "../firebase";
+
+function ChatMessageGet({ roomId }) {
+  const [message, setMessage] = useState([]);
+  useEffect(() => {
+    if (roomId) {
+      db.collection("rooms")
+        .doc(roomId)
+        .collection("messages")
+        .orderBy("timestamp", "asc")
+        .onSnapshot((snapshot) =>
+          setMessage(snapshot.docs.map((doc) => doc.data()))
+        );
+    }
+  }, [roomId]);
   return (
-    <p className={`chat-get`}>
-      <span className="chat-name">kuro</span>
-      cool
-      <span className="chat-time">
-        {new Date().toLocaleTimeString("en-US", {
-          hour12: false,
-          hour: "numeric",
-          minute: "numeric",
-        })}
-      </span>
-    </p>
+    <div>
+      {message.map((msg) => {
+        return (
+          <p className={`chat-get `}>
+            <span className="chat-name">{msg.name}</span>
+            {msg.message}
+            <span className="chat-time">
+              {new Date().toLocaleTimeString("en-US", {
+                hour12: false,
+                hour: "numeric",
+                minute: "numeric",
+              })}
+            </span>
+          </p>
+        );
+      })}
+    </div>
   );
 }
 

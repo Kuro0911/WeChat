@@ -24,7 +24,7 @@ function Sidebar() {
       unsub();
     };
   }, []);
-  const [user, dispatch] = useStateValue();
+  const [{ user }, dispatch] = useStateValue();
 
   return (
     <div className="side-bar">

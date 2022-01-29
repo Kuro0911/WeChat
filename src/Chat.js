@@ -8,7 +8,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./Chat.css";
 import db from "./firebase";
-function Chat({ name, message }) {
+function Chat({ name }) {
   const { roomId } = useParams();
   const [roomName, setRoomName] = useState("");
 
@@ -46,9 +46,9 @@ function Chat({ name, message }) {
       </div>
 
       <div className="chat-body">
-        <ChatMessageGet messages={message} />
+        <ChatMessageGet roomId={roomId} />
       </div>
-      <ChatMessageSend name={name} />
+      <ChatMessageSend roomId={roomId} />
     </div>
   );
 }

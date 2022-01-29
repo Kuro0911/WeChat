@@ -3,9 +3,15 @@ import "./chat-message-send.css";
 import InsertEmoticonOutlinedIcon from "@mui/icons-material/InsertEmoticonOutlined";
 import MicOutlinedIcon from "@mui/icons-material/MicOutlined";
 import { useState } from "react";
-import axios from "./axios1.js";
-function ChatMessageSend() {
+import db from "../firebase";
+import { useStateValue } from "../Stateprovider";
+import firebase from "firebase/compat/app";
+
+function ChatMessageSend({ roomId }) {
+  const [{ user }, dispatch] = useStateValue();
   const [input, setInput] = useState("");
+  /*
+  import axios from "./axios1.js";
 
   const sendMessage = async (e) => {
     e.preventDefault();
@@ -17,7 +23,16 @@ function ChatMessageSend() {
     });
     setInput("");
   };
-
+  */
+  const sendMessage = (e) => {
+    e.preventDefault();
+    db.collection("rooms").doc(roomId).collection("messages").add({
+      message: input,
+      name: user.displayName,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+    setInput("");
+  };
   return (
     <div className="chat-foot">
       <InsertEmoticonOutlinedIcon />

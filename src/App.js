@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import "./App.css";
 import Chat from "./Chat";
 import Sidebar from "./Sidebar";
@@ -6,15 +5,10 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./Login";
 import { useStateValue } from "./Stateprovider";
 function App() {
-  const [message, setMessage] = useState([]);
-  useEffect(() => {
-    setMessage("");
-  }, []);
   /*
   **implement  using back end ***
   import Pusher from "pusher-js";
   import axios from "./axios";
-
   useEffect(() => {
     const pusher = new Pusher("ca483be98c5f58141de1", {
       cluster: "ap2",
@@ -45,7 +39,7 @@ function App() {
                 path="/rooms/:roomId"
                 element={
                   <>
-                    <Chat message={message} />
+                    <Chat />
                   </>
                 }
               />

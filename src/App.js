@@ -4,6 +4,7 @@ import "./App.css";
 import Chat from "./Chat";
 import Sidebar from "./Sidebar";
 import axios from "./axios";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function App() {
   const [message, setMessage] = useState([]);
   useEffect(() => {
@@ -32,8 +33,19 @@ function App() {
   return (
     <div className="App">
       <div className="app-body">
-        <Sidebar />
-        <Chat message={message} />
+        <Router>
+          <Sidebar />
+          <Routes>
+            <Route
+              path="/rooms/:roomId"
+              element={
+                <>
+                  <Chat message={message} />
+                </>
+              }
+            />
+          </Routes>
+        </Router>
       </div>
     </div>
   );

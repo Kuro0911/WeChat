@@ -4,16 +4,31 @@ import AttachFileOutlinedIcon from "@mui/icons-material/AttachFileOutlined";
 import { Avatar, IconButton } from "@mui/material";
 import ChatMessageGet from "./Chat-messages/chat-message-get";
 import ChatMessageSend from "./Chat-messages/chat-message-send";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import "./Chat.css";
+import db from "./firebase";
 function Chat({ name, message }) {
+  const { roomId } = useParams();
+  const [roomName, setRoomName] = useState("");
+
+  useEffect(() => {
+    if (roomId) {
+      db.collection("rooms")
+        .doc(roomId)
+        .onSnapshot((snapshot) => setRoomName(snapshot.data().name));
+    }
+  }, [roomId]);
+
   return (
     <div className="chat">
       <div className="chat-header">
-        <Avatar />
+        <Avatar
+          src={`https://avatars.dicebear.com/api/identicon/${roomId}.svg`}
+        />
 
         <div className="head-info">
-          <h3>Room Name</h3>
+          <h3>{roomName}</h3>
           <p>black nigga moment</p>
         </div>
 

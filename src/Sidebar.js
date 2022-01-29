@@ -7,6 +7,7 @@ import "./Sidebar.css";
 import { Avatar, IconButton } from "@mui/material";
 import SidebarChat from "./SidebarChat";
 import db from "./firebase";
+import { useStateValue } from "./Stateprovider";
 
 function Sidebar() {
   const [rooms, setRooms] = useState([]);
@@ -23,10 +24,12 @@ function Sidebar() {
       unsub();
     };
   }, []);
+  const [user, dispatch] = useStateValue();
+
   return (
     <div className="side-bar">
       <div className="header">
-        <Avatar src="https://lh3.googleusercontent.com/kOODH1UDaCQ99JPkQXZY3PvkEcuY2B0DS7exApJ9r3PFDWjINbUgKI9kJI0kxnSwzohlk63Zmqi04CoJIg-SQBfXKmKjFxpgpAbFcqxvx3bS435TxbOgCTAbgWFre16FC9ywQ79IYQ=w2400" />
+        <Avatar src={user?.photoURL} />
         <div className="Rheader">
           <IconButton>
             <DonutLargeIcon />

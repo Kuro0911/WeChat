@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react";
-import Pusher from "pusher-js";
 import "./App.css";
 import Chat from "./Chat";
 import Sidebar from "./Sidebar";
-import axios from "./axios";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Login from "./Login";
+import { useStateValue } from "./Stateprovider";
 function App() {
   const [message, setMessage] = useState([]);
   useEffect(() => {
-    axios.get("/messages/sync").then((response) => {
-      setMessage(response.data);
-    });
+    setMessage("");
   }, []);
+  /*
+  **implement  using back end ***
+  import Pusher from "pusher-js";
+  import axios from "./axios";
 
   useEffect(() => {
     const pusher = new Pusher("ca483be98c5f58141de1", {
@@ -27,26 +29,30 @@ function App() {
       channel.unsubscribe();
     };
   }, [message]);
-
-  console.log(message);
+  */
+  const [user, dispatch] = useStateValue();
 
   return (
     <div className="App">
-      <div className="app-body">
-        <Router>
-          <Sidebar />
-          <Routes>
-            <Route
-              path="/rooms/:roomId"
-              element={
-                <>
-                  <Chat message={message} />
-                </>
-              }
-            />
-          </Routes>
-        </Router>
-      </div>
+      {!user ? (
+        <Login />
+      ) : (
+        <div className="app-body">
+          <Router>
+            <Sidebar />
+            <Routes>
+              <Route
+                path="/rooms/:roomId"
+                element={
+                  <>
+                    <Chat message={message} />
+                  </>
+                }
+              />
+            </Routes>
+          </Router>
+        </div>
+      )}
     </div>
   );
 }

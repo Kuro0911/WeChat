@@ -11,12 +11,16 @@ import db from "./firebase";
 function Chat({ name }) {
   const { roomId } = useParams();
   const [roomName, setRoomName] = useState("");
+  const [roomDesc, setRoomDesc] = useState("");
 
   useEffect(() => {
     if (roomId) {
       db.collection("rooms")
         .doc(roomId)
         .onSnapshot((snapshot) => setRoomName(snapshot.data().name));
+      db.collection("rooms")
+        .doc(roomId)
+        .onSnapshot((snapshot) => setRoomDesc(snapshot.data().description));
     }
   }, [roomId]);
 
@@ -29,7 +33,7 @@ function Chat({ name }) {
 
         <div className="head-info">
           <h3>{roomName}</h3>
-          <p>black nigga moment</p>
+          <p>{roomDesc}</p>
         </div>
 
         <div className="chat-Rheader">

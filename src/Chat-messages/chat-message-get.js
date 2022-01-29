@@ -21,7 +21,7 @@ function ChatMessageGet({ roomId }) {
     <div>
       {message.map((msg) => {
         return (
-          <p className={`chat-get ${msg.uid == user.uid && "chat-send"}`}>
+          <p className={`chat-get ${msg.uid === user.uid && "chat-send"}`}>
             <span className="chat-name">{msg.name}</span>
             {msg.message}
             <span className="chat-time">

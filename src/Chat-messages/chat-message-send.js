@@ -30,6 +30,7 @@ function ChatMessageSend({ roomId }) {
       message: input,
       name: user.displayName,
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+      uid: user.uid,
     });
     setInput("");
   };

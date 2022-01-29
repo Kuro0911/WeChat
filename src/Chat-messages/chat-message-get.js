@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./chat-message-get.css";
+import { useStateValue } from "../Stateprovider";
 import db from "../firebase";
 
 function ChatMessageGet({ roomId }) {
+  const [{ user }, dispatch] = useStateValue();
   const [message, setMessage] = useState([]);
   useEffect(() => {
     if (roomId) {
@@ -19,7 +21,7 @@ function ChatMessageGet({ roomId }) {
     <div>
       {message.map((msg) => {
         return (
-          <p className={`chat-get `}>
+          <p className={`chat-get ${msg.uid == user.uid && "chat-send"}`}>
             <span className="chat-name">{msg.name}</span>
             {msg.message}
             <span className="chat-time">

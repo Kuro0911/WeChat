@@ -23,7 +23,7 @@ function Login() {
     <div className="login">
       <div className="login-container">
         <img
-          src={`https://lh3.googleusercontent.com/GK-EUB7pehkuTVgbXyuFUIVGbCYOp1iv8tv3EHGYZPu2g5vulacxCHaLgAtkGX24-5mKKPhkV8oHCRZpHk0woqnCCcC7Zj4AwQw6TaJOQXxSANocI7otouf50AHFlGq6Pi0OTnWV1g=w600-h315-p-k`}
+          src={`https://lh3.googleusercontent.com/q9yz_I4SarXzN8IHDSfwSLHcSegOEOuwPIxoxi2WtQO5CyA0e08mPrCx6jj_y3SQzPILSIJGVd5bmTKBdU9Nneys7pl8kqI8pnReqsaGs3fgVZGAlp9Zx6Z6TAQNh_9FmPT0X2XQnw=w474-h315-p-k`}
           alt=""
         />
         <div className="login-text">

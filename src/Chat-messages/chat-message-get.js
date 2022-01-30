@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./chat-message-get.css";
 import { useStateValue } from "../Stateprovider";
 import db from "../firebase";
+import { Avatar } from "@mui/material";
 
 function ChatMessageGet({ roomId }) {
   const [{ user }, dispatch] = useStateValue();
@@ -20,7 +21,8 @@ function ChatMessageGet({ roomId }) {
   return (
     <div>
       {message.map((msg) => {
-        return (
+        const imgSRC = msg.imgsrc;
+        return imgSRC === user.photoURL ? (
           <p className={`chat-get ${msg.uid === user.uid && "chat-send"}`}>
             <span className="chat-name">{msg.name}</span>
             {msg.message}
@@ -32,6 +34,21 @@ function ChatMessageGet({ roomId }) {
               })}
             </span>
           </p>
+        ) : (
+          <div className={`chat-container`}>
+            <Avatar className="ava" src={msg.imgsrc}></Avatar>
+            <p className={`chat-get ${msg.uid === user.uid && "chat-send"}`}>
+              <span className="chat-name">{msg.name}</span>
+              {msg.message}
+              <span className="chat-time">
+                {new Date().toLocaleTimeString("en-US", {
+                  hour12: false,
+                  hour: "numeric",
+                  minute: "numeric",
+                })}
+              </span>
+            </p>
+          </div>
         );
       })}
     </div>

@@ -1,3 +1,11 @@
+.chat-container {
+  display: flex;
+}
+.ava {
+  margin-bottom: 30px;
+  margin-top: 15px;
+  margin-right: 20px;
+}
 .chat-get {
   position: relative;
   font-size: 16px;

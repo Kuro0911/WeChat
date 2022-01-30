@@ -27,6 +27,7 @@ function ChatMessageSend({ roomId }) {
   const sendMessage = (e) => {
     e.preventDefault();
     db.collection("rooms").doc(roomId).collection("messages").add({
+      imgsrc: user?.photoURL,
       message: input,
       name: user.displayName,
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),

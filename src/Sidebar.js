@@ -25,13 +25,15 @@ function Sidebar() {
     };
   }, []);
   const [{ user }, dispatch] = useStateValue();
-
+  const handleClick = () => {
+    window.open("https://github.com/Kuro0911/netflix-clone");
+  };
   return (
     <div className="side-bar">
       <div className="header">
         <Avatar src={user?.photoURL} />
         <div className="Rheader">
-          <IconButton>
+          <IconButton onClick={() => handleClick()}>
             <DonutLargeIcon />
           </IconButton>
           <IconButton>

@@ -48,3 +48,10 @@
   overflow: scroll;
   height: 71vh;
 }
+.sidebar-chat::-webkit-scrollbar {
+  display: none;
+}
+.sidebar-chat {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

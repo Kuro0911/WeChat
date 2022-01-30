@@ -24,10 +24,6 @@
   top: -15px;
   font-weight: 800;
   font-size: xx-small;
-  clear: both;
-  display: inline-block;
-  overflow: hidden;
-  white-space: nowrap;
 }
 .chat-send {
   margin-left: auto;

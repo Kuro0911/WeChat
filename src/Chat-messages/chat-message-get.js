@@ -24,7 +24,6 @@ function ChatMessageGet({ roomId }) {
         const imgSRC = msg.imgsrc;
         return imgSRC === user.photoURL ? (
           <p className={`chat-get ${msg.uid === user.uid && "chat-send"}`}>
-            <span className="chat-name">{msg.name}</span>
             {msg.message}
             <span className="chat-time">
               {new Date().toLocaleTimeString("en-US", {

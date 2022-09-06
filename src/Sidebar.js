@@ -26,7 +26,7 @@ function Sidebar() {
   }, []);
   const [{ user }, dispatch] = useStateValue();
   const handleClick = () => {
-    window.open("https://github.com/Kuro0911/netflix-clone");
+    window.open("https://github.com/Kuro0911/WeChat");
   };
   return (
     <div className="side-bar">
